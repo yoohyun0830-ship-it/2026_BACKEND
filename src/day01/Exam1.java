@@ -31,6 +31,7 @@ public class Exam1 {
         // ** {main 함수 안} 선언/만들기 , 실행문 가능 **
         int b = 10; // 가능 !
         // [2] 콘솔 출력문 실행하기
+        System.out.println(b);
         // so + 엔터
         // CTRL + f5
         System.out.println("안녕자바"); // JS의 console.log() 와 동일
