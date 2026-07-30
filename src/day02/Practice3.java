@@ -43,7 +43,7 @@ System.err.println(넓이);
 System.out.println("실수1:"); double 실수1 = scan.nextDouble();
 System.out.println("실수2:"); double 실수2 = scan.nextDouble();
 double 결과1 = (실수1/실수2)*100;
-System.out.println(결과1);
+System.out.println("비율:"+결과1 +"%");
 
 
 /*[문제 4] Scanner를 이용해 정수 하나를 입력받아, 
@@ -52,7 +52,8 @@ System.out.println(결과1);
 정수를 입력하세요: 17
 출력 예시:
 결과: true */
-System.out.println("정수 입력:"); int num = scan.nextInt();
+System.out.println("정수 입력:"); 
+int num = scan.nextInt();
 System.out.println( num % 2== 1);
 
 
@@ -62,7 +63,7 @@ System.out.println( num % 2== 1);
 출력 예시:
 결과: true */
 System.out.println("숫자입력:"); int num1 = scan.nextInt();
-System.out.println( num1 %7 == 0 );
+System.out.println( num1 % 7 == 0 );
 
 /*[문제 6] Scanner를 이용해 아이디와 비밀번호를 String으로 입력받아, 
 아이디가 "admin"이고 비밀번호가 "1234"와 모두 일치하면 true, 아니면 false를 출력하시오.
@@ -95,7 +96,7 @@ Scanner를 이용해 1차 점수와 2차 점수를 각각 int로 입력받아,
 결과: 합격 */
 System.out.print("문제8] 정수:"); int 정수8 = scan.nextInt();
 System.out.print("문제8] 정수:"); int 정수9 = scan.nextInt();
-System.out.println( 정수8 + 정수9 >= 90 ? "합격" : "불합격" );
+System.out.println( 정수8 + 정수9 >= 150 ? "합격" : "불합격" );
 
 /*[문제 9]  Scanner를 이용해 이름을 String으로 입력받아, 
 만약 이름이 "유재석"과 일치하면 이름 뒤에 "(방장)"을 붙여서 출력하고, 
