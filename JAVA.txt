@@ -37,4 +37,4 @@
         scanner scan = new Scanner( System.in );
     2. 입력객체 통한 입력함수 (nextXXX(), 타입주의 , 여러개 next()엔터기준으로 구분)
         타입 변수명 = scan.nextXXX();
-
+       
