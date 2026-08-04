@@ -78,8 +78,14 @@ public class Practice4 {
     입력 예시:
     점수를 입력하세요: 750
     출력 예시: B급 경품 */
+    System.out.println("점수 입력"); int score = scan.nextInt();
+    if(score>=900){System.out.println("A급 경품");}
+    else if(score<900 && score>=700){System.out.println("B급 경품");}
+    else if(score<700 && score>=500){System.out.println("C급 경품");}
+    else{System.out.println("참가상");}
 
-    /*[문제 7] Scanner를 이용해 사용자 역할(role)을 문자열로 입력받습니다. 역할에 따라 다른 접근 권한 메시지를 출력하는 프로그램을 작성하시오.
+    /*[문제 7] Scanner를 이용해 사용자 역할(role)을 문자열로 입력받습니다.
+     역할에 따라 다른 접근 권한 메시지를 출력하는 프로그램을 작성하시오.
     admin: '모든 기능에 접근할 수 있습니다.'
     editor: '콘텐츠 수정 및 생성 기능에 접근할 수 있습니다.'
     viewer: '콘텐츠 조회만 가능합니다.'
@@ -87,6 +93,12 @@ public class Practice4 {
     입력 예시:
     역할을 입력하세요: editor
     출력 예시: 콘텐츠 수정 및 생성 기능에 접근할 수 있습니다. */
+    System.out.println("역할 입력:"); String position = scan.next();
+    if(position.equals("admin")){System.out.println("모든 기능에 접근할 수 있습니다.");}
+    else if(position.equals("editor")){System.out.println("콘텐츠 수정 및 생성 기능에 접근할 수 있습니다.");}
+    else if(position.equals("viewer")){System.out.println("콘텐츠 조회만 가능합니다.");}
+    else{System.out.println(" 정의되지 않은 역할입니다.");};
+
 
     /*[문제 8] Scanner를 이용해 사용자의 나이를 정수로 입력받아, 아래 기준에 따라 입장료를 출력하는 프로그램을 작성하시오.
     8세 미만: '무료'
@@ -96,6 +108,11 @@ public class Practice4 {
     입력 예시:
     나이를 입력하세요: 22
     출력 예시: 10,000원 */
+    System.out.println("나이 입력:"); int age = scan.nextInt();
+    if(age>=65){System.out.println("3000원");}
+    else if(age<65 && age>=20){System.out.println("10000원");}
+    else if(age<=19 && age>=8 ){System.out.println("10,000원");}
+    else{System.out.println("무료");}
 
     /*[문제 9] Scanner를 이용해 하나의 점수를 입력받아 다음 조건에 따라 등급을 출력하는 프로그램을 작성하시오.
     90점 이상: 'A등급'
@@ -105,6 +122,11 @@ public class Practice4 {
     입력 예시:
     점수를 입력하세요: 85
     출력 예시: B등급 */
+    System.out.println("시험점수 입력:"); int grade = scan.nextInt();
+    if(grade >= 90){System.out.println("A등급");}
+    else if( grade >= 80 ){System.out.println("B등급");}
+    else if (grade >= 70){System.out.println("C등급");}
+    else{System.out.println("재시험");}
 
     /*[문제 10] Scanner를 이용해 총 구매 금액을 입력받습니다. 
     구매 금액에 따라 할인율을 적용하여 최종 결제 금액을 출력하는 프로그램을 작성하시오.
@@ -114,6 +136,12 @@ public class Practice4 {
     10,000원 미만: 할인 없음
     입력 예시: 총 구매 금액: 60000
     출력 예시: 최종 결제 금액: 54000원 */
+    System.out.println("구매금액 입력: "); int 구매금액 = scan.nextInt();
+    if(구매금액>=50000){System.out.println("결제금액:"+구매금액*0.9);}
+    else if (구매금액>=30000){System.out.println("결제금액:"+구매금액*0.95);}
+    else if (구매금액>=10000){System.out.println("결제금액:"+구매금액*0.99);}
+    else{System.out.println("결제금액 : 할인 없음"+구매금액);}
+
 
     /*[문제 11] 1부터 12 사이의 월(Month)을 숫자로 입력받아, 
     해당하는 계절을 출력하는 프로그램을 작성하시오. 
@@ -125,6 +153,13 @@ public class Practice4 {
     입력 예시:
     월(1~12)을 입력하세요: 9
     출력 예시: 가을 */
+    System.out.println("월 입력:"); int 계절 = scan.nextInt();
+    if(계절>=3 && 계절<=5){System.out.println("봄");}
+    else if(계절>=6 && 계절<=8){System.out.println("여름");}
+    else if(계절>=9 && 계절<=11){System.out.println("가을");}
+    else if(계절>=1 && 계절<=12){System.out.println("겨울");}
+    else{System.out.println("잘못된 월입니다.");}
+
 
     /*[문제 12] Scanner를 이용해 서로 다른 세 개의 정수를 입력받아, 
     가장 큰 수를 출력하는 프로그램을 작성하시오.
@@ -133,6 +168,13 @@ public class Practice4 {
     두 번째 정수: 12
     세 번째 정수: 78
     출력 예시: 가장 큰 수: 78 */
+    System.out.println("1번 정수 입력:"); int num1 = scan.nextInt();
+    System.out.println("2번 정수 입력:"); int num2 = scan.nextInt();
+    System.out.println("3번 정수 입력:"); int num3 = scan.nextInt();
+    int max = num1;
+    if(num2>max){max=num2;}
+    if(num3>max){max=num3;}
+    System.out.println("가장 큰 수"+max);
 
     /*[문제 13] Scanner를 이용해 연도(year)를 입력받아 
     해당 연도가 윤년인지 평년인지 판별하는 프로그램을 작성하시오.
@@ -142,6 +184,9 @@ public class Practice4 {
     입력 예시:
     연도를 입력하세요: 2024
     출력 예시: 2024년은 윤년입니다. */
+    System.out.println("연도 입력:"); int year = scan.nextInt();
+    if(year%4==0 && year%100 !=0 || year % 400 ==0 ){System.out.println(year+"은(는)윤년입니다.");}
+    else{System.out.println( year+"은(는)평년입니다.");}
 
     /*[문제 14] Scanner를 이용해 서로 다른 세 개의 정수를 입력받아, 
     오름차순(작은 수부터 큰 수 순서)으로 정렬하여 출력하는 프로그램을 작성하시오.
@@ -150,6 +195,35 @@ public class Practice4 {
     두 번째 정수: 4
     세 번째 정수: 8
     출력 예시: 4, 8, 17 */
+
+    System.out.print("첫 번째 정수: ");
+    int n1 = scan.nextInt();
+
+    System.out.print("두 번째 정수: ");
+    int n2 = scan.nextInt();
+
+    System.out.print("세 번째 정수: ");
+    int n3 = scan.nextInt();
+
+    if(n1 > n2){
+        int temp = num1;
+            n1 = n2;
+            n2 = temp;
+    }
+
+    if(n2 > n3){
+        int temp = num2;
+        n2 = n3;
+        n3 = temp;
+    }
+
+    if(n1 > n2){
+        int temp = n1;
+            n1 = n2;
+            n2 = temp;
+    }
+
+    System.out.println(n1 + ", " + n2 + ", " + n3);
 
     /*[문제 15] 가위바위보 게임
     지시: 두 명의 플레이어가 참여하는 가위바위보 게임을 만드시오.
@@ -163,8 +237,18 @@ public class Practice4 {
     플레이어1 (0:가위, 1:바위, 2:보): 1
     플레이어2 (0:가위, 1:바위, 2:보): 0
     출력 예시: 플레이어1 승리 */
+    System.out.print("플레이어1 (0:가위, 1:바위, 2:보): ");
+    int p1 = scan.nextInt();
 
+    System.out.print("플레이어2 (0:가위, 1:바위, 2:보): ");
+    int p2 = scan.nextInt();
 
+    if(p1==p2){System.out.println("무승부");}
+    else if((p1==0 && p2==1) || (p1==1 && p2==2)|| (p1==2 && p2 == 0)){
+        System.out.println("플레이어1 승리");
+    }
+    else{System.out.println("플레이어2 승리");}
+    
 
 
 
