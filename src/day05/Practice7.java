@@ -95,12 +95,6 @@ public class Practice7 {
                    volume 값은 2 감소시킨 뒤, 변경된 채널과 볼륨을 출력하세요.*/
                     Television tv = new Television();
 
-                    tv.channel = 7;
-                    tv.volume = 20;
-
-                    System.out.println(tv.channel);
-                    System.out.println(tv.volume);
-
                     tv.channel=11;
                     tv.volume -= 2;
 
@@ -242,9 +236,10 @@ public class Practice7 {
 
          /* [문제 7] Television 클래스를 만드세요. 
          channel(정수)과 volume(정수) 멤버 변수를 가집니다.*/
+    
          class Television{
-            int channel;
-            int volume;
+            int channel = 7;
+            int volume = 20;
          }
 
          /* [문제 8] Player 클래스를 만드세요. 
