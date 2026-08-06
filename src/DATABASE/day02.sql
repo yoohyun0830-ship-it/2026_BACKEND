@@ -12,7 +12,7 @@ show tables;
 # 3) 특정 테이블의 속성 확인 
 describe test1;
 # 4) 특정 테이블 삭제
--- drop table test1;
+drop table test1;
 # 5) 테이블 수정 
 # 1) 필드/속성 추가 
 alter table test1 add 필드명4 float;
@@ -44,3 +44,55 @@ create table test2(
     논리필드 boolean -- boolean(1비트) --> tinyint(1), 마지막 필드타입 뒤로 , 넣지 마세요!
 );
 describe test2; -- 테이블 속성 확인
+
+#---------------------------------------------------------------------------------------------
+# 속성/필드 제약 조건
+CREATE table test3(
+    필드명1 TINYINT NOT null , -- 해당 필드/속성에는 null 저장할 수 없도록 설정 * 값이 null 이면 오류발생
+    필드명2 SMALLINT UNIQUE , -- 해당 필드/속성에는 중복값을 저장할 수 없도록 설정 * 값이 다른 레코드와 같다면 오류발생
+    필드명3 INT DEFAULT 100 , -- 해당 필드/속성에 레코드(행) 추가시 기본값이 10 대입된다.
+    필드명4 DATETIME DEFAULT now() , -- 예) 레코드 삽입시 현재날짜/시간/now() 자동 대입된다.
+    필드명5 BIGINT AUTO_INCREMENT  , 
+    constraint PRIMARY KEY (필드명5) -- 특정 필드/속성을 pk로 설정한다.
+    -- AUTO_INCREMENT : 레코드(행) 삽입시 자동으로 순서버노 대입된다 , 1 2 3 4 5 6 ~
+    -- PRIMARY KEY(pk) : 기본/식별 키 , 식별가능한 고유한 값 갖는 필드 (not null + unipue 내장됨)
+        -- 학번/사번/~~코드/번호 등등
+        -- FOREIGN key(fk)
+    -- FOREIGN KEY(fk) : 참조/외래 키(pk가 다른 테이블에 위치한 경우) ,  다른 테이블의 기본키 참조하는 키
+        -- 수강신청학한학번 , 급여지급사번 , 판매된제품코드
+            -- on delete/update cascade     : pk가 삭제/수정 되면 fk도 같이 삭제/수정
+            -- on delete/update set null    : pk가 삭제/수정 되면 fk은 null 으로 수정
+            -- on delete/update restrict    : (생략시 기본값) pk가 fk로부터 참조 중이면 삭제/수정 불가능
+);
+create table test4( 
+    필드명1 bigint, 
+    constraint foreign key( 필드명1 ) references test3(필드명5) on delete cascade on update cascade
+);
+-- mysql workbench 또는 VSCODE 에서 데이터베이스서버 연동 가능 
+-- mysql workbench( ERD 다이어그램 자동생성)
+
+# 예제 회원제 게시판 서비스 ----------------------------------------------------------------- # 
+drop database if exists boardService0805; #(1) 데이터베이스 존재하면 삭제한다.
+create database boardService0805; #(2) 데이터베이스 생성한다.
+use boardService0805; #(3) 데이터베이스 활성화한다.
+
+create table member( # 4) 회원테이블 생성한다.
+    mno int auto_increment , -- 자동 회원번호
+    constraint primary key( mno ) , -- 회원번호 pk 설정
+    mid varchar(30) not null unique , -- 회원아이디 이면서 최대30글자, 공백불가능, 중복불가능 설정 
+    mpwd varchar(20) not null , -- 회원비밀번호 이면서 최대 20글자 , 공백불가능 , 중복 가능 설정 
+    mname varchar(10) not null , -- 회원닉네임 
+    mdate datetime default now() -- 회원가입날짜/시간 , 현재날짜/시간 자동으로 기본값 설정
+);
+create table board( # 5) 게시물테이블 생성한다.
+    bno int auto_increment , 
+    constraint primary key( bno ) , -- 게시물번호 pk 설정 * 테이블1개당 pk1개이상 권장 *
+    btitle varchar(255) , -- 게시물제목 
+    bcontent longtext , -- 게시물내용 , 대용량(사진)포함한 최대 4G 까지 
+    bdate datetime default now() , -- 게시물작성일
+    bview int default 0 , -- 조회수
+    mno int , -- 작성자( mid/회원아이디 가 아니고 mno/회원번호 ) , 관례적으로 PK-FK 필드명 동일 
+    constraint foreign key( mno ) references member( mno ) 
+        on delete cascade -- 회원이 탈퇴/삭제 하면 그 회원이 작성한 작성한 게시물도 같이 삭제 
+);
+-- mysql workbench 에서 ERD 다이어그램 확인 
