@@ -89,4 +89,4 @@ SELECT * FROM member limit 2; -- 1 ~ 2 (2)
 SELECT * FROM member limit 0 , 2; -- 1 ~ 2 ( 0번 부터 2개 )(2)
 SELECT * FROM member limit 5 , 5; -- 5번 부터 5개 (5) 
 
--- [순서] select 필드명 from 테이블명 where 조건절 group by 그룹필드 having 그룹조건
+-- [순서] select 필드명 from 테이블명 where 조건절 group by 그룹필드 having 그룹조건 order by 정렬필드 limit 시작인덱스, 개수;

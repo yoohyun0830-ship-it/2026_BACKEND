@@ -1,5 +1,7 @@
 package day07;
 
+import java.util.Scanner;
+
 public class Practice9 {
     public static void main(String[] args) {
         
@@ -7,14 +9,16 @@ public class Practice9 {
 1. "안녕하세요, 메소드입니다."라고 출력하는 
 printMessage 메소드를 정의하세요. (매개변수 X, 반환값 X)
 2. main 함수에서 Printer 객체를 생성하고, printMessage 메소드를 호출하세요.*/
-
+Printer p1 = new Printer();
+p1.printMessage();
 
 /*[문제 2] Greeter 클래스를 만드세요.
 1. 문자열(이름) 하나를 매개변수로 받아, "안녕하세요, [이름]님!"이라고 
 출력하는 greet 메소드를 정의하세요. (매개변수 O, 반환값 X)
 2. main 함수에서 Greeter 객체를 생성하고, 
 자신의 이름을 인자로 전달하여 greet 메소드를 호출하세요.*/
-
+Greeter g1 = new Greeter();
+g1.greet("유현");
 
 
 /*[문제 3] SimpleCalculator 클래스를 만드세요.
@@ -22,7 +26,8 @@ printMessage 메소드를 정의하세요. (매개변수 X, 반환값 X)
 두 수의 합을 반환하는 add 메소드를 정의하세요. (매개변수 O, 반환값 O)
 2. main 함수에서 SimpleCalculator 객체를 생성하고,
 add 메소드를 호출하여 반환된 결과를 변수에 저장한 뒤, 그 변수를 출력하세요.*/
-
+SimpleCalculator calculator = new SimpleCalculator();
+calculator.add(10,2);
 
 
 /*[문제 4] Checker 클래스를 만드세요.
@@ -30,7 +35,13 @@ add 메소드를 호출하여 반환된 결과를 변수에 저장한 뒤, 그 �
 홀수이면 false를 반환하는 isEven 메소드를 정의하세요.
 2. main 함수에서 isEven 메소드를 호출하고, 
 반환된 값에 따라 "짝수입니다." 또는 "홀수입니다."를 출력하세요.*/
-
+Checker check = new Checker();
+boolean result1 = check.isEven(5);
+if (result1 == true) {
+    System.out.println("짝수입니다.");
+} else {
+    System.out.println("홀수입니다.");
+}
 
 
 /*[문제 5] Lamp 클래스를 만드세요. isOn (boolean) 멤버 변수를 가집니다.
@@ -38,8 +49,11 @@ add 메소드를 호출하여 반환된 결과를 변수에 저장한 뒤, 그 �
 turnOff 메소드를 호출하면 false가 되도록 두 메소드를 정의하세요.
 2. main 함수에서 Lamp 객체를 생성하고, turnOn과 turnOff를 차례로 호출하며 
 각 단계에서 램프의 상태(isOn 값)를 출력하여 확인하세요.*/
-
-
+Lamp lamp = new Lamp();
+lamp.turnOn();
+System.out.println(lamp.isOn);
+lamp.turnOff();
+System.out.println(lamp.isOn);
 
 /*[문제 6] Product 클래스를 만드세요. 
 name(문자열)과 stock(정수) 멤버 변수를 가집니다.
@@ -49,7 +63,14 @@ name(문자열)과 stock(정수) 멤버 변수를 가집니다.
 부족하면 "재고 부족" 메시지를 출력하고 false를 반환합니다.
 2. main 함수에서 Product 객체를 생성하고 초기 재고를 10으로 설정한 뒤, 
 sell 메소드를 호출하여 구매를 시도하고 결과를 확인하세요.*/
+Product product = new Product();
+product.name = "노트북";
+product.stock = 10;
 
+boolean result2 = product.sell(5);
+
+System.out.println("구매결과:"+result2);
+System.out.println("남은재고:"+ product.stock);
 
 
 /*[문제 7] Visualizer 클래스를 만드세요.
@@ -57,8 +78,8 @@ sell 메소드를 호출하여 구매를 시도하고 결과를 확인하세요.
 하나의 문자열로 만들어 반환하는 getStars 메소드를 정의하세요.
 2. main 함수에서 getStars(5)를 호출하여
  반환된 문자열 "★★★★★"를 출력하세요.*/
-
-
+Visualizer v1 = new Visualizer();
+System.out.println(v1.getStar(5));
 
 /*[문제 8] ParkingLot 클래스를 만드세요.
 1. 주차 시간(분)을 매개변수로 받아, 요금 규정에 따라 
@@ -70,14 +91,80 @@ sell 메소드를 호출하여 구매를 시도하고 결과를 확인하세요.
 일일 최대 요금: 20,000원
 3. main 함수에서 calculateFee 메소드에 65, 
 140을 각각 인자로 전달하여 반환된 요금을 출력하세요.*/
+ParkingLot parking = new ParkingLot();
+System.out.println(parking.calculateFee(40));
+
 
     }
     
 }
-
+// [1]
 class Printer{
     void printMessage(){
         System.out.println("안녕하세요, 메소드입니다.");
-        return;
     }
 }
+// [2]
+class Greeter{
+    void greet(String 이름)
+    {System.out.printf("안녕하세요, %s님!\n",이름);}
+}
+// [3]
+class SimpleCalculator{
+    void add (int x , int y){
+        System.out.println(x+y);
+    }
+}
+// [4]
+class Checker{
+    boolean isEven(int 정수1){
+        if(정수1%2==0){
+            return true;
+        } else { return false;}
+    }
+}
+// [5]
+class Lamp{
+    boolean isOn;
+    void turnOn(){isOn=true;}
+    void turnOff(){isOn=false;}
+}
+// [6]
+class Product{
+    String name;
+    int stock;
+    
+    boolean sell(int count){
+        if(stock >= count){
+            stock = stock - count;
+            return true;
+        } else { System.out.println("재고부족");
+            return false;
+        }
+    }
+}
+// [7]
+class Visualizer {
+    String getStar(int x) {
+        String star = "";
+        for (int i = 0; i < x; i++) {
+            star += "★";
+        }
+        return star;
+    }
+}
+class ParkingLot{
+    int minute;
+    int fee;
+    int calculateFee(int minute) {
+        this.minute = minute - 30;
+        this.fee = 1000 + this.minute / 10 * 500;
+        if (this.fee > 20000)
+            this.fee = 20000;
+        if (this.minute < 30)
+            this.fee = 1000;
+        return this.fee;
+    }
+}
+        
+    
