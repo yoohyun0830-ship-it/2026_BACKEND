@@ -34,6 +34,11 @@ System.out.println(RemoteControl.MIN_VOLUME);
 useWeapon(Attackable weapon) 메소드를 만드세요.
 4. main 함수에서 Sword 객체와 Gun 객체를 생성한 뒤, 
 이 객체들을 Character의 useWeapon() 메소드에 인자로 전달하여 동작을 확인하세요.*/
+Sword sword = new Sword();
+Gun gun = new Gun();
+Character character = new Character();
+character.useWeapon(sword);
+character.useWeapon(gun);
 
 /*[문제 4] 다중 인터페이스 구현
 1. "하늘을 납니다."를 출력하는 fly() 추상 메소드를 가진 Flyable 인터페이스를 만드세요.
@@ -61,6 +66,11 @@ Swimmable 타입인지 각각 확인하고, 맞다면 해당 인터페이스 타
 Greeting 인터페이스 타입의 변수를 선언하면서 익명 구현 객체를 생성하여 
 welcome() 메소드를 즉석에서 구현하고 호출하세요.
 예] Greeting g = new Greeting() { ... }; */
+Greeting greeting = new Greeting() {
+    public void welcome(){System.out.println("구현");
+} };
+greeting.welcome();
+
 
 /*[문제 8] 디폴트 메소드 (Default Method)
 1.Device 인터페이스에, turnOn(), turnOff() 추상 메소드와 함께, 
@@ -100,7 +110,26 @@ interface RemoteControl{
     public static final int MIN_VOLUME = 0;
 }
 
-// [3]
+// [3] 
 interface Attackable{
-    void attack 
+    void attack();
 }
+
+class Sword implements Attackable{
+    public void attack(){System.out.println("검으로 공격!");}
+}
+
+class Gun implements Attackable{
+    public void attack(){System.out.println("총으로 공격!");}
+}
+class Character{
+    void useWeapon(Attackable weapon){weapon.attack();}
+}
+
+// [4]
+interface Flyable{
+    void fly();}
+class 
+
+// [7] 익명 구현객체 : 클래스 없이 일회성 구현체 만들기
+interface Greeting { void welcome();}
