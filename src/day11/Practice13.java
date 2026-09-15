@@ -132,4 +132,5 @@ interface Flyable{
 class 
 
 // [7] 익명 구현객체 : 클래스 없이 일회성 구현체 만들기
-interface Greeting { void welcome();}
+interface Greeting { void welcome();} 
+
